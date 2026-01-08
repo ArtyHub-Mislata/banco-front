@@ -1,0 +1,7 @@
+@use "../01_utilities" as *;
+
+@for $i from 1 through 9 {
+  .g--font-size-#{$i} {   
+      font-size: var(--mlt-sys-font-size-#{$i}) !important; 
+  }
+}

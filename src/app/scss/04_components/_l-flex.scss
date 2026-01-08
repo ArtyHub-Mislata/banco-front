@@ -1,0 +1,47 @@
+@use "../01_utilities" as *;
+
+.l-flex {
+    display: flex;
+
+    &--row {
+        flex-direction: row;
+    }
+
+    &--column {
+        flex-direction: column;
+    }
+
+    &--justify-center {
+        justify-content: center;
+    }
+
+    &--justify-between {
+        justify-content: space-between;
+    }
+
+    &--align-center {
+        align-items: center;
+    }
+
+    &--align-start {
+        align-items: flex-start;
+    }
+
+    &--self-center {
+        align-self: center;
+    }
+
+    @for $i from 0 through 9 {
+        &--gap-#{$i} {
+            gap: var(--mlt-sys-gap-#{$i});
+        }
+    }
+
+    &--wrap {
+        flex-wrap: wrap;
+    }
+
+    &--nowrap {
+        flex-wrap: nowrap;
+    }
+}

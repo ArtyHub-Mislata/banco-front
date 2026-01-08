@@ -1,0 +1,27 @@
+@use "../01_utilities/" as *;
+
+@for $i from 0 through 9 {
+  .g--padding-#{$i} {   
+      padding: var(--mlt-sys-padding-#{$i}) !important; 
+  }
+  .g--padding-horizontal-#{$i} {   
+      padding-left: var(--mlt-sys-padding-#{$i}) !important;
+      padding-right: var(--mlt-sys-padding-#{$i}) !important;
+  }
+  .g--padding-vertical-#{$i} {   
+      padding-top: var(--mlt-sys-padding-#{$i}) !important;
+      padding-bottom: var(--mlt-sys-padding-#{$i}) !important;
+  }
+  .g--padding-top-#{$i} {   
+      padding-top: var(--mlt-sys-padding-#{$i}) !important;
+  }
+  .g--padding-bottom-#{$i} {   
+      padding-bottom: var(--mlt-sys-padding-#{$i}) !important;
+  }
+  .g--padding-right-#{$i} {   
+      padding-right: var(--mlt-sys-padding-#{$i}) !important;
+  }
+  .g--padding-left-#{$i} {   
+      padding-left: var(--mlt-sys-padding-#{$i}) !important;
+  }
+}

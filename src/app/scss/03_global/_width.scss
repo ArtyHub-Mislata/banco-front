@@ -1,0 +1,23 @@
+@use "../01_utilities" as *;
+
+.g--width-400 {
+    max-width: var(--mlt-sys-width-400);
+}
+.g--width-420 {
+    max-width: var(--mlt-sys-width-420);
+}
+.g--width-500 {
+    max-width: var(--mlt-sys-width-500);
+}
+.g--width-600 {
+    max-width: var(--mlt-sys-width-600);
+}
+.g--width-800 {
+    max-width: var(--mlt-sys-width-800);
+}
+.g--width-1100 {
+    max-width: var(--mlt-sys-width-1100);
+}
+.g--width-1200 {
+    max-width: var(--mlt-sys-width-1200);
+}

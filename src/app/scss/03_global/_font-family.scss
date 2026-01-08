@@ -1,0 +1,9 @@
+@use "../01_utilities" as *;
+
+$fonts: open-sans, noto-sans-arabic, montserrat-arabic, questrial, default;
+
+@each $font in $fonts {
+    .g--font-#{$font} {
+        font-family: var(--mlt-sys-font-#{$font}) !important;
+    }
+}
