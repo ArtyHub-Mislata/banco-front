@@ -14,55 +14,52 @@ export class HttpService {
   private url = "http://localhost:8080/api"
 
   constructor (private httpClient: HttpClient){}
+  
   //CLIENTE
-  getClienteById(id: number): Observable<ClienteModel> {
-    return this.httpClient.get<ClienteModel>(`${this.url}/cliente/${id}`);
-  }
-
   getClienteByLogin(login: string): Observable<ClienteModel> {
-    return this.httpClient.get<ClienteModel>(`${this.url}/cliente/login/${login}`);
+    return this.httpClient.get<ClienteModel>(`${this.url}/customer/${login}`);
   }
 
   //CUENTAS
   getCuentaById(id: number): Observable<CuentaModel> {
-    return this.httpClient.get<CuentaModel>(`${this.url}/cuenta/${id}`);
+    return this.httpClient.get<CuentaModel>(`${this.url}/account/${id}`);
   }
 
   getCuentaByIban(iban: string): Observable<CuentaModel> {
-    return this.httpClient.get<CuentaModel>(`${this.url}/cuenta/iban/${iban}`);
+    return this.httpClient.get<CuentaModel>(`${this.url}/account/iban/${iban}`);
   }
 
   getCuentasByClienteId(id: number): Observable<CuentaModel[]> {
-    return this.httpClient.get<CuentaModel[]>(`${this.url}/cliente/${id}/cuenta`);
+    return this.httpClient.get<CuentaModel[]>(`${this.url}/customer/${id}/account`);
   }
 
   //MOVIMIENTOS
   getMovimientoById(id: number): Observable<MovimientoBancarioModel> {
-    return this.httpClient.get<MovimientoBancarioModel>(`${this.url}/movimiento/${id}`);
+    return this.httpClient.get<MovimientoBancarioModel>(`${this.url}/transaction/${id}`);
   }
 
   getMovimientoByImporte(importe: number): Observable<MovimientoBancarioModel> {
-    return this.httpClient.get<MovimientoBancarioModel>(`${this.url}/movimiento/importe/${importe}`);
+    return this.httpClient.get<MovimientoBancarioModel>(`${this.url}/transaction/amount/${importe}`);
   }
 
   getMovimientoByConcepto(concepto: string): Observable<MovimientoBancarioModel> {
-    return this.httpClient.get<MovimientoBancarioModel>(`${this.url}/movimiento/concepto/${concepto}`);
+    return this.httpClient.get<MovimientoBancarioModel>(`${this.url}/transaction/concept/${concepto}`);
   }
 
   getMovimientosByCuentaId(id: number): Observable<MovimientoBancarioModel[]> {
-    return this.httpClient.get<MovimientoBancarioModel[]>(`${this.url}/cuenta/${id}/movimiento`);
+    return this.httpClient.get<MovimientoBancarioModel[]>(`${this.url}/account/${id}/transaction`);
   }
 
   //TARJETAS
   getTarjetaById(id: number): Observable<TarjetaCreditoModel> {
-    return this.httpClient.get<TarjetaCreditoModel>(`${this.url}/tarjeta/${id}`);
+    return this.httpClient.get<TarjetaCreditoModel>(`${this.url}/card/${id}`);
   }
 
   getTarjetaByNumeroTarjeta(numeroTarjeta: string): Observable<TarjetaCreditoModel> {
-    return this.httpClient.get<TarjetaCreditoModel>(`${this.url}/tarjeta/numeroTarjeta/${numeroTarjeta}`);
+    return this.httpClient.get<TarjetaCreditoModel>(`${this.url}/card/cardNumber/${numeroTarjeta}`);
   }
 
   getTarjetasByCuentaId(id: number): Observable<TarjetaCreditoModel[]> {
-    return this.httpClient.get<TarjetaCreditoModel[]>(`${this.url}/cuenta/${id}/tarjeta`);
+    return this.httpClient.get<TarjetaCreditoModel[]>(`${this.url}/account/${id}/card`);
   }
 }

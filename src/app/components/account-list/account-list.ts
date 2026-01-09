@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-account-list',
+  selector: 'account-list',
   imports: [],
   templateUrl: './account-list.html',
   styleUrl: './account-list.scss',
