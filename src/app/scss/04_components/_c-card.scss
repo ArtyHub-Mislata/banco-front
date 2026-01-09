@@ -1,0 +1,29 @@
+@use "../01_utilities" as *;
+
+.c-card {
+    background-color: var(--mlt-sys-color-white);
+    border-radius: var(--mlt-sys-border-radius-4);
+    box-shadow: var(--mlt-sys-shadow-lg);
+    width: var(--mlt-sys-width-100);
+
+    &__body {
+        padding: var(--mlt-sys-padding-4);
+    }
+
+    &__title {
+        font-weight: var(--mlt-sys-fw-bold);
+        font-size: var(--mlt-sys-font-size-5);
+        text-align: center;
+    }
+
+    &__sub-title {
+        font-weight: var(--mlt-sys-fw-medium);
+        font-size: var(--mlt-sys-font-size-5);
+        text-align: center;
+    }
+
+    &__text {
+        text-align: center;
+        font-size: var(--mlt-sys-font-size-3);
+    }
+}
