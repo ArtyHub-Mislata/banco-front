@@ -1,0 +1,54 @@
+<div class="l-flex l-flex--justify-center g--margin-top-5">
+    <div class="c-card g--width-1200">
+        <div class="c-card__body">
+
+            <h3 class="c-card__title g--margin-bottom-5">
+                Listado de Cuentas
+            </h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>IBAN</th>
+                            <th>SALDO</th>
+                            <th>CLIENTE</th>
+                            <th>TARJETAS</th>
+                            <th>MOVIMIENTOS</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (account of accounts; track account.id) {
+                            <tr>
+                                <td>{{ account.id }}</td>
+
+                                <td>{{ account.iban }}</td>
+
+                                <td class="g--font-questrial">{{ account.saldo }}€</td>
+
+                                <td>
+                                    <a routerLink="/">
+                                        {{ account.cliente.name }} {{ account.cliente.lastName1 }} {{ account.cliente.lastName2 }}
+                                    </a>
+                                </td>
+
+                                <td>{{ account.tarjetas.length }}</td>
+
+                                <td>{{ account.movimientos.length }}</td>
+
+                                <td class="l-flex l-flex--justify-center l-flex--gap-2">
+                                    <a c-button funcion="normal" importancia="primaria" tamano="pequeno"
+                                        routerLink="/account/{{ account.id }}">
+                                        Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

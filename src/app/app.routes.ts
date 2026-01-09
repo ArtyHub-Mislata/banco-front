@@ -1,17 +1,14 @@
 import { Routes } from '@angular/router';
-import { AccountList } from './components/account-list/account-list';
-import { CardList } from './components/card-list/card-list';
-import { TransactionList } from './components/transaction-list/transaction-list';
-import { InitialPage } from './components/initial-page/initial-page';
-import { CustomerPage } from './components/customer-page/customer-page';
-import { AccountPage } from './components/account-page/account-page';
-import { CardPage } from './components/card-page/card-page';
-import { TransactionPage } from './components/transaction-page/transaction-page';
+import { AccountList } from './components/pages/account-list/account-list';
+import { CardList } from './components/pages/card-list/card-list';
+import { TransactionList } from './components/pages/transaction-list/transaction-list';
+import { CustomerPage } from './components/pages/customer-page/customer-page';
+import { AccountPage } from './components/pages/account-page/account-page';
+import { CardPage } from './components/pages/card-page/card-page';
+import { TransactionPage } from './components/pages/transaction-page/transaction-page';
 
 export const routes: Routes = [
-    {path: '', component: InitialPage},
-
-    {path: 'customer', component: CustomerPage},
+    {path: '', component: CustomerPage},
 
     {path: 'accounts', component: AccountList},
     {path: 'accounts/:id', component: AccountPage},
@@ -20,5 +17,5 @@ export const routes: Routes = [
     {path: 'cards/:id', component: CardPage},
 
     {path: 'transactions', component: TransactionList},
-    {path: 'transactions/:id', component: TransactionPage},
+    {path: 'transactions/:id', component: TransactionPage}
 ];

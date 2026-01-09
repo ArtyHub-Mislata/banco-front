@@ -1,0 +1,37 @@
+<div class="l-flex l-flex--justify-center g--margin-top-5 l-flex--gap-5">
+    <div class="l-flex l-flex--justify-center g--margin-bottom-4">
+        <div class="c-card g--width-400">
+            <div class="c-card__body">
+                <h5 class="c-card__title">{{ customer.name }} {{ customer.lastName1 }} {{ customer.lastName2 }}</h5>
+                <p class="c-card__text"><strong>DNI:</strong> {{ customer.dni }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <h2 class="c-card__title g--margin-bottom-5">Cuentas del usuario</h2>
+        <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>IBAN</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (account of accounts; track account.id) {
+                    <tr>
+                        <td>{{ account.id }}</td>
+                        <td>{{ account.iban }}</td>
+                        <td class="l-flex l-flex--justify-center">
+                            <a c-button funcion="normal" importancia="primaria" tamano="pequeno"
+                                routerLink="/accounts/{{account.id}}">
+                                Ver
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

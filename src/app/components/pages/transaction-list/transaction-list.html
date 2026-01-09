@@ -1,0 +1,57 @@
+<div class="l-flex l-flex--justify-center g--margin-top-5">
+    <div class="c-card g--width-1200">
+        <div class="c-card__body">
+
+            <h3 class="c-card__title g--margin-bottom-5">
+                Listado de Movimientos
+            </h3>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped align-middle text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>TIPO</th>
+                            <th>ORIGEN</th>
+                            <th>FECHA</th>
+                            <th>IMPORTE</th>
+                            <th>CONCEPTO</th>
+                            <th>CUENTA</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (transaction of transactions; track transaction.id) {
+                            <tr>
+                                <td>{{ transaction.id }}</td>
+
+                                <td>{{ transaction.tipoMovimiento }}</td>
+
+                                <td>{{ transaction.origenMovimiento }}</td>
+
+                                <td>{{ transaction.fecha }}</td>
+
+                                <td class="g--font-questrial">{{ transaction.importe }}€</td>
+
+                                <td>{{ transaction.concepto }}</td>
+
+                                <td>
+                                    <a routerLink="/accounts/{{ transaction.cuenta.id }}">
+                                        {{ transaction.cuenta.iban }}
+                                    </a>
+                                </td>
+
+                                <td class="l-flex l-flex--justify-center l-flex--gap-2">
+                                    <a c-button funcion="normal" importancia="primaria" tamano="pequeno"
+                                        routerLink="/transactions/{{ transaction.id }}">
+                                        Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

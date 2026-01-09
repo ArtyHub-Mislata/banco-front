@@ -1,0 +1,40 @@
+<div class="l-flex l-flex--justify-center g--margin-top-5">
+    <div class="c-card g--width-420">
+        <div class="c-card__body">
+
+            <h5 class="c-card__title c-card__title-m3">
+                {{ transaction.id }}
+            </h5>
+
+            <p class="c-card__text c-card__text-m3">
+                <strong>Tipo Movimiento:</strong> {{ transaction.tipoMovimiento }}
+            </p>
+
+            <p class="c-card__text c-card__text-m3">
+                <strong>Origen Movimiento:</strong> {{ transaction.origenMovimiento }}
+            </p>
+
+            <p class="c-card__text c-card__text-m3">
+                <strong>Fecha:</strong> {{ transaction.fecha }}
+            </p>
+
+            <p class="c-card__text c-card__text-m3 g--font-questrial">
+                <strong>Importe:</strong> {{ transaction.importe }}€
+            </p>
+
+            <p class="c-card__text c-card__text-m3">
+                <strong>Concepto:</strong> {{ transaction.concepto }}
+            </p>
+
+            <a routerLink="/accounts/{{ transaction.cuenta.id }}" class="c-card__text c-card__text-m3">
+                <strong>Cuenta:</strong> {{ transaction.cuenta.iban }}
+            </a>
+
+        </div>
+
+        <a c-button funcion="alternativa" importancia="secundaria" tamano="mediano" class="g--margin-top-5" routerLink="/transactions">
+            Volver
+        </a>
+        
+    </div>
+</div>
