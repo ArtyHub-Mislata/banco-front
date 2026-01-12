@@ -1,0 +1,50 @@
+<div class="l-flex l-flex--justify-center g--margin-top-5">
+    <div class="c-card g--padding-4">
+
+        <h3 class="c-card__title g--margin-bottom-5">
+            Iniciar sesión
+        </h3>
+
+        <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+            <div class="g--margin-bottom-5">
+                <label class="form-label">Usuario</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    [(ngModel)]="credential.login" 
+                    name="login"
+                    required
+                    #loginCtrl="ngModel">
+            </div>
+
+            <div class="g--margin-bottom-5">
+                <label class="form-label">Contraseña</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    [(ngModel)]="credential.password" 
+                    name="password"
+                    required
+                    #passwordCtrl="ngModel">
+            </div>
+
+            @if (generalError) {
+                <div class="alert alert-warning text-center">
+                    {{ generalError }}
+                </div>
+            }
+
+            <div class="l-flex l-flex--justify-between">
+                <a c-button funcion="alternativa" importancia="terciaria" tamano="mediano"
+                    routerLink="/">
+                    Volver
+                </a>
+
+                <button c-button funcion="normal" importancia="primaria" tamano="mediano"
+                    [disabled]="loginForm.invalid">
+                    Entrar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

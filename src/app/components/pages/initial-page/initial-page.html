@@ -1,0 +1,21 @@
+<div class="l-flex l-flex--column l-flex--justify-center g--margin-top-5">
+    @if(customer){
+        <div class="c-card g--margin-bottom-5 g--padding-bottom-5">
+            <h1 class="c-card__title">Bienvenido {{customer.name}}</h1>
+        </div>
+        
+        <div class="l-flex l-flex--row l-flex--justify-center">
+            <a class="c-card c-card__body g--margin-5" routerLink="/artworks">
+                <h2 class="c-card__title">Total de cuentas</h2>
+                <p class="c-card__text">{{totalAccounts}}</p>
+            </a>
+        </div>
+    }
+    @else{
+        <div class="c-card">
+            <h1 class="c-card__title">NO VENDAS HAMBURGUESAS</h1>
+            <h1 class="c-card__text">VENDE ARTE</h1>
+            <h3 class="c-card__title">BANCO ARTYHUB, TU BANCO</h3>
+        </div>
+    }
+</div>
