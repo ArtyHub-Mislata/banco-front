@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpService } from '../../../services/http-service';
 
 @Component({
   selector: 'logout-page',
@@ -8,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class LogoutPage {
 
+  constructor(private router: Router, private httpService: HttpService) {}
+  
+  logOut(){
+    this.httpService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login'])
+      }, 
+      error: (err) =>{
+        console.log("HAY UN ERROR EN EL LOGOUT" ,err)
+      }
+    })
+  }
 }

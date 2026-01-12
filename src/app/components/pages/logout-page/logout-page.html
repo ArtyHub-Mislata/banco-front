@@ -2,6 +2,6 @@
     <div class="c-card c-card__body">
         <h1 class="c-title__title">¿Estas seguro que deseas cerrar sesión?</h1>
         <a c-button funcion="normal" importancia="primaria" tamano="mediano" routerLink="/">Cancelar</a>
-        <a c-button funcion="peligrosa" importancia="terciaria" tamano="mediano" routerLink="/login">Cerrar Sesión</a> 
+        <a c-button funcion="peligrosa" importancia="terciaria" tamano="mediano" (click)="logOut()">Cerrar Sesión</a> 
     </div>
 </div>

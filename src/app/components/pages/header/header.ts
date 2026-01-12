@@ -30,14 +30,6 @@ export class Header {
     })
   }
   logOut(){
-    this.httpService.logout().subscribe({
-      next: () => {
-        this.router.navigate(['/logout'])
-      }, 
-      error: (err) =>{
-        console.log("HAY UN ERROR EN EL LOGOUT" ,err)
-      }
-
-    })
+    this.router.navigate(['/logout']);
   }
 }

@@ -21,7 +21,7 @@ export class InitialPage {
                 if (!customer) return;
 
                 forkJoin({
-                    customer: this.httpService.getUser(),
+                    customer: this.httpService.getCustomerById(customer.id?.toString() || ''),
                     accounts: this.httpService.getAccountsByCustomerId(customer.id?.toString() || ''),
                 }).subscribe(({ customer, accounts }) => {
                     this.customer = customer; 
