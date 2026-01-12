@@ -16,6 +16,11 @@
                     required
                     #loginCtrl="ngModel">
             </div>
+            @if (loginCtrl.invalid && (loginCtrl.dirty || loginCtrl.touched)) {
+                <div class="alert alert-danger">
+                    El usuario es obligatorio
+                </div>
+            }
 
             <div class="g--margin-bottom-5">
                 <label class="form-label">Contraseña</label>
@@ -27,6 +32,11 @@
                     required
                     #passwordCtrl="ngModel">
             </div>
+            @if (passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)) {
+                <div class="alert alert-danger">
+                    El password es obligatorio
+                </div>
+            }
 
             @if (generalError) {
                 <div class="alert alert-warning text-center">
@@ -41,7 +51,7 @@
                 </a>
 
                 <button c-button funcion="normal" importancia="primaria" tamano="mediano"
-                    [disabled]="loginForm.invalid">
+                    [disabled]="loginForm.invalid || loading">
                     Entrar
                 </button>
             </div>

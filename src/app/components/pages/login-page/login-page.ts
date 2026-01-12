@@ -21,6 +21,8 @@ export class LoginPage {
 
   generalError: string = '';
 
+  loading: boolean = false;
+
   constructor(private httpService: HttpService, private router: Router) { }
 
   onLogin(loginForm: NgForm) {
@@ -29,11 +31,15 @@ export class LoginPage {
 
     if(loginForm.invalid) return;
 
+    this.loading = true;
+
     this.httpService.login(this.credential).subscribe({
       next: () => {
+        this.loading = false;
         this.router.navigate(['/']);
       },
       error: () => {
+        this.loading = false;
         this.generalError = 'Error al iniciar sesión';
       },
     });
