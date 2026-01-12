@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HttpService } from '../../../services/http-service';
 import { TransactionModel } from '../../../models/TransactionModel';
+import { AccountModel } from '../../../models/AccountModel';
 
 @Component({
   selector: 'transaction-list',
@@ -11,15 +12,18 @@ import { TransactionModel } from '../../../models/TransactionModel';
 })
 export class TransactionList {
   transactions!: TransactionModel[];
+  account!: AccountModel;
 
   constructor(private httpService: HttpService){}
 
   ngOnInit() {
-    this.getAllTransactions()
+    const accountId = this.account.id;
+    const accountIdString = accountId?.toString();
+    this.getAllTransactionsByAccount(accountIdString!);
   }
 
-  getAllTransactions() {
-    this.httpService.getAllTransactions().subscribe({
+  getAllTransactionsByAccount(accountIdString: string) {
+    this.httpService.getTransactionsByAccountId(accountIdString).subscribe({
       next: (transactions) => {
         this.transactions = transactions;
       },

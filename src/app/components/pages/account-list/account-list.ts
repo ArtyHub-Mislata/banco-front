@@ -17,11 +17,13 @@ export class AccountList {
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-      this.getAllAccounts();
+    const customerId = this.customer.id;
+    const customerIdString = customerId?.toString();
+    this.getAllAccountsByCustomer(customerIdString!);
   }
 
-  getAllAccounts(): void {
-      this.httpService.getAllAccounts().subscribe({
+  getAllAccountsByCustomer(customerIdString: string): void {
+      this.httpService.getAccountsByCustomerId(customerIdString).subscribe({
         next: (accounts) => {
           this.accounts = accounts;
         },
