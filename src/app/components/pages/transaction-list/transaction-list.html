@@ -6,6 +6,30 @@
                 Listado de Movimientos
             </h3>
 
+            <div class="l-flex l-flex--gap-3 g--margin-bottom-3">
+                <div>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Buscar por ID, tipo, origen, fecha, importe, concepto o IBAN..."
+                       [(ngModel)]="searchText">
+                </div>
+
+                <select class="form-select"
+                        [(ngModel)]="filterTipo">
+                    <option value="">Todos los tipos</option>
+                    <option value="DEBE">Debe</option>
+                    <option value="HABER">Haber</option>
+                </select>
+
+                <select class="form-select"
+                        [(ngModel)]="filterOrigen">
+                    <option value="">Todos los orígenes</option>
+                    <option value="TRANSFERENCIA">Transferencia</option>
+                    <option value="DOMICILIACION">Domiciliación</option>
+                    <option value="TARJETABANCARIA">Tarjeta bancaria</option>
+                </select>
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped align-middle text-center">
                     <thead class="table-light">
@@ -21,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (transaction of transactions; track transaction.id) {
+                        @for (transaction of filteredTransactions; track transaction.id) {
                             <tr>
                                 <td>{{ transaction.id }}</td>
 

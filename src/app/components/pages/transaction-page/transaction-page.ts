@@ -17,13 +17,13 @@ export class TransactionPage {
     ngOnInit() {
         this.route.params.subscribe(
           params => {
-            this.loadTransaction(params['id']);
+            this.loadTransaction(params['idAccount'], params['id']);
           }
         );
     }
 
-    loadTransaction(id: string) {
-      this.httpService.getTransactionById(id).subscribe({
+    loadTransaction(idAccount: string, id: string) {
+      this.httpService.getTransactionById(idAccount, id).subscribe({
         next: (transaction) => {
           this.transaction = transaction;
         },

@@ -32,57 +32,45 @@ export class HttpService {
 
   //ACCOUNTS
   getAccountById(id: string): Observable<AccountModel> {
-    return this.httpClient.get<AccountModel>(`${this.url}/account/${id}`);
+    return this.httpClient.get<AccountModel>(`${this.url}/customer/accounts/${id}`);
   }
 
   getAccountByIban(iban: string): Observable<AccountModel> {
-    return this.httpClient.get<AccountModel>(`${this.url}/account/iban/${iban}`);
-  }
-
-  getAccountsByCustomerId(id: string): Observable<AccountModel[]> {
-    return this.httpClient.get<AccountModel[]>(`${this.url}/customer/${id}/account`);
+    return this.httpClient.get<AccountModel>(`${this.url}/customer/accounts/iban/${iban}`);
   }
 
   getAllAccounts(): Observable<AccountModel[]> {
-    return this.httpClient.get<AccountModel[]>(`${this.url}/account`);
+    return this.httpClient.get<AccountModel[]>(`${this.url}/customer/accounts`);
   }
 
   //TRANSACTIONS
-  getTransactionById(id: string): Observable<TransactionModel> {
-    return this.httpClient.get<TransactionModel>(`${this.url}/transaction/${id}`);
+  getTransactionById(idAccount: string, id: string): Observable<TransactionModel> {
+    return this.httpClient.get<TransactionModel>(`${this.url}/accounts/${idAccount}/transactions/${id}`);
   }
 
-  getTransactionByImporte(importe: number): Observable<TransactionModel> {
-    return this.httpClient.get<TransactionModel>(`${this.url}/transaction/amount/${importe}`);
+  getTransactionByImporte(idAccount: string, importe: number): Observable<TransactionModel> {
+    return this.httpClient.get<TransactionModel>(`${this.url}/accounts/${idAccount}/transactions/amount/${importe}`);
   }
 
-  getTransactionByConcepto(concepto: string): Observable<TransactionModel> {
-    return this.httpClient.get<TransactionModel>(`${this.url}/transaction/concept/${concepto}`);
+  getTransactionByConcepto(idAccount: string, concepto: string): Observable<TransactionModel> {
+    return this.httpClient.get<TransactionModel>(`${this.url}/accounts/${idAccount}/transactions/concept/${concepto}`);
   }
 
-  getTransactionsByAccountId(id: string): Observable<TransactionModel[]> {
-    return this.httpClient.get<TransactionModel[]>(`${this.url}/account/${id}/transaction`);
-  }
-
-  getAllTransactions(): Observable<TransactionModel[]> {
-    return this.httpClient.get<TransactionModel[]>(`${this.url}/transaction`);
+  getAllTransactions(idAccount: string): Observable<TransactionModel[]> {
+    return this.httpClient.get<TransactionModel[]>(`${this.url}/accounts/${idAccount}/transactions`);
   }
 
   //CARDS
-  getCardById(id: string): Observable<CardModel> {
-    return this.httpClient.get<CardModel>(`${this.url}/card/${id}`);
+  getCardById(idAccount: string, id: string): Observable<CardModel> {
+    return this.httpClient.get<CardModel>(`${this.url}/accounts/${idAccount}/cards/${id}`);
   }
 
-  getCardByNumeroTarjeta(numeroTarjeta: string): Observable<CardModel> {
-    return this.httpClient.get<CardModel>(`${this.url}/card/cardNumber/${numeroTarjeta}`);
+  getCardByNumeroTarjeta(idAccount: string, numeroTarjeta: string): Observable<CardModel> {
+    return this.httpClient.get<CardModel>(`${this.url}/accounts/${idAccount}/cards/cardNumber/${numeroTarjeta}`);
   }
 
-  getCardsByAccountId(id: string): Observable<CardModel[]> {
-    return this.httpClient.get<CardModel[]>(`${this.url}/account/${id}/card`);
-  }
-
-  getAllCards(): Observable<CardModel[]> {
-    return this.httpClient.get<CardModel[]>(`${this.url}/card`);
+  getAllCards(idAccount: string): Observable<CardModel[]> {
+    return this.httpClient.get<CardModel[]>(`${this.url}/accounts/${idAccount}/cards`);
   }
 
   //LOGIN

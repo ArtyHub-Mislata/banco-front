@@ -40,7 +40,7 @@ export class CustomerPage {
   }
 
   loadAccountsOfUser(id: string){
-    this.httpService.getAccountsByCustomerId(id).subscribe({
+    this.httpService.getAllAccounts().subscribe({
       next: (accounts) => {
         this.accounts = accounts
       },

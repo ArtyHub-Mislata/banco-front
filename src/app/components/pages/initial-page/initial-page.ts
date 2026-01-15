@@ -22,7 +22,7 @@ export class InitialPage {
 
                 forkJoin({
                     customer: this.httpService.getCustomerById(customer.id?.toString() || ''),
-                    accounts: this.httpService.getAccountsByCustomerId(customer.id?.toString() || ''),
+                    accounts: this.httpService.getAllAccounts(),
                 }).subscribe(({ customer, accounts }) => {
                     this.customer = customer; 
                     this.totalAccounts = accounts.length;

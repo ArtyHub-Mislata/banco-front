@@ -6,6 +6,13 @@
                 Listado de Cuentas
             </h3>
 
+            <div class="g--margin-bottom-3">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Buscar por IBAN, Cliente o ID..."
+                       [(ngModel)]="searchText">
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped align-middle text-center">
                     <thead class="table-light">
@@ -20,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (account of accounts; track account.id) {
+                        @for (account of filteredAccounts; track account.id) {
                             <tr>
                                 <td>{{ account.id }}</td>
 
@@ -40,7 +47,7 @@
 
                                 <td class="l-flex l-flex--justify-center l-flex--gap-2">
                                     <a c-button funcion="normal" importancia="primaria" tamano="pequeno"
-                                        routerLink="/account/{{ account.id }}">
+                                        routerLink="/accounts/{{ account.id }}">
                                         Ver
                                     </a>
                                 </td>

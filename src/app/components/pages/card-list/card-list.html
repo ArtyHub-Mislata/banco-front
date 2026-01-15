@@ -6,6 +6,13 @@
                 Listado de Tarjetas
             </h3>
 
+            <div class="g--margin-bottom-3">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Buscar por número de tarjeta, titular o ID..."
+                       [(ngModel)]="searchText">
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped align-middle text-center">
                     <thead class="table-light">
@@ -20,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (card of cards; track card.id) {
+                        @for (card of filteredCards; track card.id) {
                             <tr>
                                 <td>{{ card.id }}</td>
 

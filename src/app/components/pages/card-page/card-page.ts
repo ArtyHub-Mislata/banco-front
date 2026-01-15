@@ -18,16 +18,17 @@ export class CardPage {
   ngOnInit() {
     this.route.paramMap.subscribe(
       paramMap => {
+        const idAccount = paramMap.get('idAccount');
         const id = paramMap.get('id');
-        if(id){
-          this.loadCard(id);
+        if(idAccount && id){
+          this.loadCard(idAccount, id);
         }
       }
     )
   }
 
-  loadCard(id: string){
-    this.httpService.getCardById(id).subscribe({
+  loadCard(idAccount: string, id: string){
+    this.httpService.getCardById(idAccount, id).subscribe({
       next: (card) => {
         this.card = card;
       },
