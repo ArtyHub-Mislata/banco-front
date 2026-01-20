@@ -13,7 +13,7 @@ import { HttpService } from '../../../services/http-service';
 })
 export class LoginPage {
   credential: CredentialModel = {
-    login: '',
+    username: '',
     password: '',
   };
 

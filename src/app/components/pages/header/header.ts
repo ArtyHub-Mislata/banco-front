@@ -25,6 +25,7 @@ export class Header {
     this.httpService.getCustomerById(this.customer?.id?.toString() || '').subscribe({
       next: (customer) => {
         this.customer = customer;
+        console.log(customer)
         this.cd.detectChanges();
       }
     })

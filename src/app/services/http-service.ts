@@ -74,11 +74,14 @@ export class HttpService {
   }
 
   //LOGIN
-  login(credential: CredentialModel): Observable<{ api_token: string }> {
-    return this.httpClient.post<{ api_token: string }>(`${this.url}/login`, credential)
+  login(credential: CredentialModel): Observable<{ token: string }> {
+    
+    return this.httpClient.post<{ token: string }>(`${this.url}/login`, credential)
     .pipe(
       map((resp) => {
-        localStorage.setItem('token', resp.api_token);
+        console.log(resp)
+
+        localStorage.setItem('token', resp.token);
         this.btnIsLogged.next(true);
         return resp;
       })
