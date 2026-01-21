@@ -7,10 +7,11 @@ import { AccountModel } from '../../../models/AccountModel';
 import { CardModel } from '../../../models/CardModel';
 import { TransactionModel } from '../../../models/TransactionModel';
 import { DatePipe, DecimalPipe, SlicePipe } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-initial-page',
-  imports: [DatePipe, DecimalPipe, SlicePipe],
+  imports: [DatePipe, DecimalPipe, SlicePipe, RouterLink],
   templateUrl: './initial-page.html',
   styleUrl: './initial-page.scss',
 })
@@ -19,7 +20,7 @@ export class InitialPage {
   accounts!: AccountModel[];
   cards!: CardModel[];
   transactions!: TransactionModel[];
-
+  saldoTotal!: number;
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
@@ -45,10 +46,14 @@ export class InitialPage {
           (acc, cuenta) => acc.concat(cuenta.movimientos),
           [],
         );
+        this.saldoTotal = this.calcularSaldoTotal(accounts);
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+  calcularSaldoTotal(accounts: AccountModel[]) {
+    return accounts.reduce((acumulador, cuenta) => acumulador + cuenta.saldo, 0);
   }
 }

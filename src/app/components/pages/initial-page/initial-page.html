@@ -11,10 +11,10 @@
       <!-- CUENTAS -->
       <section class="accounts-section">
         <h2 class="section-title">Cuentas</h2>
-
-        <div class="accounts-list">
+        <h3 class="section-subtitle">Saldo total: {{saldoTotal}}</h3>
+        <div class="accounts-list" >
           @for (account of accounts; track account.iban) {
-            <div class="account-card">
+            <div class="account-card" routerLink="/accounts/{{account.id}}">
               <p class="account-iban">{{ account.iban }}</p>
               <h3 class="account-saldo">{{ account.saldo | number: '1.2-2' }} €</h3>
               <p class="account-meta">

@@ -1,0 +1,193 @@
+/* ===============================
+   PAGE LAYOUT
+================================ */
+
+.account-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===============================
+   HEADER CUENTA
+================================ */
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.account-iban {
+  font-size: 0.9rem;
+  color: #6b7280;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.account-saldo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.account-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* ===============================
+   TARJETAS
+================================ */
+
+.account-cards {
+  margin-bottom: 3rem;
+}
+
+.cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Reutilizamos la tarjeta bancaria */
+.bank-card {
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  padding: 1.2rem;
+  position: relative;
+  color: #fff;
+
+  background: linear-gradient(
+    135deg,
+    #020617,
+    #1e293b,
+    #0f172a
+  );
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.bank-card.small {
+  max-width: 300px;
+}
+
+.bank-card__chip {
+  width: 34px;
+  height: 26px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #facc15, #ca8a04);
+  margin-bottom: 1.4rem;
+}
+
+.bank-card__number {
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.2rem;
+}
+
+.bank-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-card__name {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.bank-card__exp {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* ===============================
+   MOVIMIENTOS
+================================ */
+
+.account-movements {
+  margin-bottom: 3rem;
+}
+
+.movements-card {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.movement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+.movement-row:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.movement-concept {
+  font-weight: 500;
+  margin: 0;
+}
+
+.movement-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.movement-amount {
+  font-weight: 600;
+}
+
+.movement-amount.positive {
+  color: #16a34a;
+}
+
+.movement-amount.negative {
+  color: #dc2626;
+}
+
+/* ===============================
+   GENERIC
+================================ */
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.c-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .account-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .movements-card {
+    max-height: none;
+  }
+}
