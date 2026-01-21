@@ -1,32 +1,65 @@
-<div class="l-flex l-flex--justify-center g--margin-top-5">
+@if (card) {
+  <div class="l-flex l-flex--justify-center g--margin-top-5">
     <div class="c-card g--width-420">
-        <div class="c-card__body">
+      <div class="c-card__body">
+        <h5 class="c-card__title c-card__title-m3">
+          {{ card.numeroTarjeta }}
+        </h5>
 
-            <h5 class="c-card__title c-card__title-m3">
-                {{ card.numeroTarjeta }}
-            </h5>
+        <p class="c-card__text c-card__text-m3 g--font-questrial">
+          <strong>Fecha Caducidad:</strong> {{ card.fechaCaducidad }}
+        </p>
 
-            <p class="c-card__text c-card__text-m3 g--font-questrial">
-                <strong>Fecha Caducidad:</strong> {{ card.fechaCaducidad }}
-            </p>
+        <p class="text-decoration-none fw-semibold"><strong>CVV:</strong> {{ card.cvv }}</p>
 
-            <p class="text-decoration-none fw-semibold">
-                <strong>CVV:</strong> {{ card.cvv }}
-            </p>
+        <p class="text-decoration-none fw-semibold">
+          <strong>Titular:</strong> {{ card.nombreCompleto }}
+        </p>
+      </div>
 
-            <p class="text-decoration-none fw-semibold">
-                <strong>Titular:</strong> {{ card.nombreCompleto }}
-            </p>
-
-            <a routerLink="/accounts/{{ card.cuenta.id }}" class="text-decoration-none fw-semibold">
-                <strong>Cuenta:</strong> {{ card.cuenta.iban }}
-            </a>
-
-        </div>
-
-        <a c-button funcion="alternativa" importancia="secundaria" tamano="mediano" class="g--margin-top-5" routerLink="/cards">
-            Volver
-        </a>
-        
+      <a
+        c-button
+        funcion="alternativa"
+        importancia="secundaria"
+        tamano="mediano"
+        class="g--margin-top-5"
+        routerLink="/cards"
+      >
+        Volver
+      </a>
     </div>
-</div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle text-center">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>TIPO</th>
+          <th>ORIGEN</th>
+          <th>FECHA</th>
+          <th>CONCEPTO</th>
+          <th>IMPORTE</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (movimiento of movimientos; track movimiento.id) {
+          <tr>
+            <td>{{ movimiento.id }}</td>
+
+            <td>{{ movimiento.tipoMovimiento }}</td>
+
+            <td>{{ movimiento.origenMovimiento }}€</td>
+
+            <td>{{ movimiento.fecha }}</td>
+
+            <td>{{ movimiento.concepto }}</td>
+
+            <td>{{ movimiento.importe }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

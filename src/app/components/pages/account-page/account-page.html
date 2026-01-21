@@ -1,32 +1,34 @@
-<div class="l-flex l-flex--justify-center g--margin-top-5">
-    <div class="c-card g--width-420">
-        <div class="c-card__body">
+@if(account){
+    <div class="l-flex l-flex--justify-center g--margin-top-5">
+        <div class="c-card g--width-420">
+            <div class="c-card__body">
 
-            <h5 class="c-card__title c-card__title-m3">
-                {{ account.iban }}
-            </h5>
+                <h5 class="c-card__title c-card__title-m3">
+                    {{ account.iban }}
+                </h5>
 
-            <p class="c-card__text c-card__text-m3 g--font-questrial">
-                <strong>Saldo:</strong> {{ account.saldo }}€
-            </p>
+                <p class="c-card__text c-card__text-m3 g--font-questrial">
+                    <strong>Saldo:</strong> {{ account.saldo }}€
+                </p>
 
-            <a routerLink="/" class="text-decoration-none fw-semibold">
-                <strong>Cliente:</strong> {{ account.cliente.name }} {{ account.cliente.lastName1 }} {{ account.cliente.lastName2 }}
+                <a routerLink="/" class="text-decoration-none fw-semibold">
+                    <strong>Cliente:</strong> {{ account.cliente.name }} {{ account.cliente.lastName1 }} {{ account.cliente.lastName2 }}
+                </a>
+
+                <a class="text-decoration-none fw-semibold">
+                    <strong>Tarjetas:</strong> {{ account.tarjetas.length }}
+                </a>
+
+                <a class="text-decoration-none fw-semibold">
+                    <strong>Movimientos:</strong> {{ account.movimientos.length }}
+                </a>
+
+            </div>
+
+            <a c-button funcion="alternativa" importancia="secundaria" tamano="mediano" class="g--margin-top-5" routerLink="/accounts">
+                Volver
             </a>
-
-            <a class="text-decoration-none fw-semibold">
-                <strong>Tarjetas:</strong> {{ account.tarjetas.length }}
-            </a>
-
-            <a class="text-decoration-none fw-semibold">
-                <strong>Movimientos:</strong> {{ account.movimientos.length }}
-            </a>
-
+            
         </div>
-
-        <a c-button funcion="alternativa" importancia="secundaria" tamano="mediano" class="g--margin-top-5" routerLink="/accounts">
-            Volver
-        </a>
-        
     </div>
-</div>
+}

@@ -61,8 +61,11 @@ export class HttpService {
   }
 
   //CARDS
-  getCardById(idAccount: string, id: string): Observable<CardModel> {
-    return this.httpClient.get<CardModel>(`${this.url}/accounts/${idAccount}/cards/${id}`);
+  getCardById(id: string): Observable<CardModel> {
+    return this.httpClient.get<CardModel>(`${this.url}/cards/${id}`);
+  }
+  getAllTransactionsOfCard(id: string): Observable<TransactionModel[]> {
+    return this.httpClient.get<TransactionModel[]>(`${this.url}/cards/${id}/transactions`)
   }
 
   getCardByNumeroTarjeta(idAccount: string, numeroTarjeta: string): Observable<CardModel> {
@@ -71,6 +74,9 @@ export class HttpService {
 
   getAllCards(idAccount: string): Observable<CardModel[]> {
     return this.httpClient.get<CardModel[]>(`${this.url}/accounts/${idAccount}/cards`);
+  }
+  getAllCardsOfUser(){
+    return this.httpClient.get<CardModel[]>(`${this.url}/cards`);
   }
 
   //LOGIN
