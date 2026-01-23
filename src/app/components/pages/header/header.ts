@@ -10,27 +10,14 @@ import { HttpService } from '../../../services/http-service';
   styleUrl: './header.scss',
 })
 export class Header {
-  isLogged: boolean = false;
-  customer?: CustomerModel;
-  
-  constructor(private httpService: HttpService, private router: Router, private cd: ChangeDetectorRef) {}
+  constructor(
+    public httpService: HttpService,
+    private router: Router,
+    private cd: ChangeDetectorRef,
+  ) {}
 
-  ngOnInit(){
-    this.httpService.isLogged$.subscribe({
-      next: (isLogged) =>{
-        this.isLogged = isLogged;
-        this.cd.detectChanges();
-      }
-    })
-    this.httpService.getCustomerById(this.customer?.id?.toString() || '').subscribe({
-      next: (customer) => {
-        this.customer = customer;
-        console.log(customer)
-        this.cd.detectChanges();
-      }
-    })
-  }
-  logOut(){
+  ngOnInit() {}
+  logOut() {
     this.router.navigate(['/logout']);
   }
 }

@@ -7,7 +7,7 @@ import { AccountModel } from '../../../models/AccountModel';
 import { CardModel } from '../../../models/CardModel';
 import { TransactionModel } from '../../../models/TransactionModel';
 import { DatePipe, DecimalPipe, SlicePipe } from '@angular/common';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-initial-page',
@@ -27,16 +27,7 @@ export class InitialPage {
     this.loadAccounts();
     this.loadUser();
   }
-  loadUser() {
-    this.httpService.getUser().subscribe({
-      next: (user) => {
-        this.customer = user;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+
   loadAccounts() {
     this.httpService.getAllAccounts().subscribe({
       next: (accounts) => {
@@ -53,6 +44,17 @@ export class InitialPage {
       },
     });
   }
+  loadUser() {
+    this.httpService.getCustomer().subscribe({
+      next: (customer) => {
+        this.customer = customer;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   calcularSaldoTotal(accounts: AccountModel[]) {
     return accounts.reduce((acumulador, cuenta) => acumulador + cuenta.saldo, 0);
   }

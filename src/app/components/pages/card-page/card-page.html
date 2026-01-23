@@ -1,4 +1,4 @@
-@if (card) {
+<!--@if (card) {
   <div class="l-flex l-flex--justify-center g--margin-top-5">
     <div class="c-card g--width-420">
       <div class="c-card__body">
@@ -62,4 +62,69 @@
       </tbody>
     </table>
   </div>
-}
+}-->
+<div class="card-page g--margin-top-5">
+  @if (card) {
+    <!-- HEADER -->
+
+    <a routerLink="app" class="back-link">← Volver</a>
+
+    <!-- TARJETA -->
+    <section class="card-preview">
+      <div class="bank-card large">
+        <div class="bank-card__chip"></div>
+
+        <p class="bank-card__number">**** **** **** {{ card.numeroTarjeta.slice(-4) }}</p>
+
+        <div class="bank-card__footer">
+          <span class="bank-card__name">
+            {{ card.nombreCompleto }}
+          </span>
+          <span class="bank-card__exp">
+            {{ card.fechaCaducidad | date: 'MM/yy' }}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVIMIENTOS -->
+    <section class="card-movements">
+      <h2 class="section-title">Movimientos de la tarjeta</h2>
+
+      @if (movimientos.length > 0) {
+        <div class="c-card movements-card">
+          @for (mov of movimientos; track mov.id) {
+            <div class="movement-row">
+              <div>
+                <p class="movement-concept">{{ mov.concepto }}</p>
+                <p class="movement-date">
+                  {{ mov.fecha | date: 'dd/MM/yyyy' }}
+                </p>
+              </div>
+
+              <span
+                class="movement-amount"
+                [class.positive]="mov.tipoMovimiento == 'HABER'"
+                [class.negative]="mov.tipoMovimiento == 'DEBE'"
+              >
+                @if (mov.tipoMovimiento === 'HABER') {
+                  +{{ mov.importe | number: '1.2-2' }} €
+                } @else {
+                  −{{ mov.importe | number: '1.2-2' }} €
+                }
+              </span>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="c-card empty-state">
+          <p>Esta tarjeta todavía no tiene movimientos</p>
+        </div>
+      }
+    </section>
+  } @else {
+    <div class="c-card center-text">
+      <p>Cargando tarjeta...</p>
+    </div>
+  }
+</div>

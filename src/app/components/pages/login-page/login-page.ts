@@ -23,20 +23,22 @@ export class LoginPage {
 
   loading: boolean = false;
 
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(
+    private httpService: HttpService,
+    private router: Router,
+  ) {}
 
   onLogin(loginForm: NgForm) {
-
     this.generalError = '';
 
-    if(loginForm.invalid) return;
+    if (loginForm.invalid) return;
 
     this.loading = true;
 
     this.httpService.login(this.credential).subscribe({
       next: () => {
         this.loading = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/app']);
       },
       error: () => {
         this.loading = false;

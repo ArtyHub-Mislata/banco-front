@@ -14,39 +14,40 @@ export class CustomerPage {
   customer!: CustomerModel;
   accounts!: AccountModel[];
 
-  constructor(private route: ActivatedRoute, private httpService: HttpService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private httpService: HttpService,
+  ) {}
 
-  ngOnInit(){
-    this.route.paramMap.subscribe(
-      paramMap => {
-        const id = paramMap.get('id');
-        if(id){
-          this.loadUser(id)
-          this.loadAccountsOfUser(id)
-        }
+  ngOnInit() {
+    this.route.paramMap.subscribe((paramMap) => {
+      const id = paramMap.get('id');
+      if (id) {
+        this.loadUser();
+        this.loadAccountsOfUser(id);
       }
-    )
+    });
   }
 
-  loadUser(id: string){
-    this.httpService.getCustomerById(id).subscribe({
+  loadUser() {
+    this.httpService.getCustomer().subscribe({
       next: (customer) => {
-        this.customer = customer
+        this.customer = customer;
       },
       error: (error) => {
-        console.log(error)
-      }
-    })
+        console.log(error);
+      },
+    });
   }
 
-  loadAccountsOfUser(id: string){
+  loadAccountsOfUser(id: string) {
     this.httpService.getAllAccounts().subscribe({
       next: (accounts) => {
-        this.accounts = accounts
+        this.accounts = accounts;
       },
       error: (error) => {
-        console.log(error)
-      }
-    })
+        console.log(error);
+      },
+    });
   }
 }

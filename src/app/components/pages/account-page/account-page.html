@@ -1,14 +1,10 @@
 <div class="account-page g--margin-top-5">
-
   @if (account) {
-
     <!-- HEADER CUENTA -->
     <section class="account-header c-card">
       <div>
         <p class="account-iban">{{ account.iban }}</p>
-        <h1 class="account-saldo">
-          {{ account.saldo | number:'1.2-2' }} €
-        </h1>
+        <h1 class="account-saldo">{{ account.saldo | number: '1.2-2' }} €</h1>
       </div>
 
       <div class="account-meta">
@@ -21,75 +17,69 @@
 
     <section class="account-cards">
       <h2 class="section-title">Tarjetas asociadas</h2>
-        @if (cardList.length > 0) {
-      <div class="cards-list">
-        @for (card of cardList; track card.numeroTarjeta) {
-          <div class="bank-card small">
-            <div class="bank-card__chip"></div>
+      @if (cardList.length > 0) {
+        <div class="cards-list">
+          @for (card of cardList; track card.numeroTarjeta) {
+            <div class="bank-card small" routerLink="/app/cards/{{ card.id }}">
+              <div class="bank-card__chip"></div>
 
-            <p class="bank-card__number">
-              **** **** **** {{ card.numeroTarjeta.slice(-4) }}
-            </p>
+              <p class="bank-card__number">**** **** **** {{ card.numeroTarjeta.slice(-4) }}</p>
 
-            <div class="bank-card__footer">
-              <span class="bank-card__name">
-                {{ card.nombreCompleto }}
-              </span>
-              <span class="bank-card__exp">
-                {{ card.fechaCaducidad | date:'MM/yy' }}
-              </span>
+              <div class="bank-card__footer">
+                <span class="bank-card__name">
+                  {{ card.nombreCompleto }}
+                </span>
+                <span class="bank-card__exp">
+                  {{ card.fechaCaducidad | date: 'MM/yy' }}
+                </span>
+              </div>
             </div>
-          </div>
-        }
-      </div>
-    }@else {
-
-    <div class="c-card empty-state">
-      <p>No hay tarjetas asociadas a esta cuenta</p>
-    </div>
-
-    }
+          }
+        </div>
+      } @else {
+        <div class="c-card empty-state">
+          <p>No hay tarjetas asociadas a esta cuenta</p>
+        </div>
+      }
     </section>
 
     <!-- MOVIMIENTOS -->
     <section class="account-movements">
       <h2 class="section-title">Movimientos</h2>
-@if (transactions.length > 0) {
-      <div class="c-card movements-card">
-        @for (mov of transactions; track mov.id) {
-          <div class="movement-row">
-            <div>
-              <p class="movement-concept">{{ mov.concepto }}</p>
-              <p class="movement-date">
-                {{ mov.fecha | date:'dd/MM/yyyy' }}
-              </p>
+      @if (transactions.length > 0) {
+        <div class="c-card movements-card">
+          @for (mov of transactions; track mov.id) {
+            <div class="movement-row">
+              <div>
+                <p class="movement-concept">{{ mov.concepto }}</p>
+                <p class="movement-date">
+                  {{ mov.fecha | date: 'dd/MM/yyyy' }}
+                </p>
+              </div>
+
+              <span
+                class="movement-amount"
+                [class.positive]="mov.tipoMovimiento == 'HABER'"
+                [class.negative]="mov.tipoMovimiento == 'DEBE'"
+              >
+                @if (mov.tipoMovimiento === 'HABER') {
+                  +{{ mov.importe | number: '1.2-2' }} €
+                } @else {
+                  −{{ mov.importe | number: '1.2-2' }} €
+                }
+              </span>
             </div>
-
-            <span
-              class="movement-amount"
-              [class.positive]="mov.importe > 0"
-              [class.negative]="mov.importe < 0"
-            >
-              {{ mov.importe | number:'1.2-2' }} €
-            </span>
-          </div>
-        }
-      </div>
+          }
+        </div>
       } @else {
-
-    <div class="c-card empty-state">
-      <p>No hay movimientos todavía</p>
-    </div>
-
-  }
+        <div class="c-card empty-state">
+          <p>No hay movimientos todavía</p>
+        </div>
+      }
     </section>
-
   } @else {
-
     <div class="c-card center-text">
       <p>Cargando cuenta...</p>
     </div>
-
   }
-
 </div>
