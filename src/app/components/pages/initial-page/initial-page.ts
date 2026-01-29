@@ -37,6 +37,8 @@ export class InitialPage {
           (acc, cuenta) => acc.concat(cuenta.movimientos),
           [],
         );
+        this.transactions.reverse();
+
         this.saldoTotal = this.calcularSaldoTotal(accounts);
       },
       error: (err) => {

@@ -12,6 +12,7 @@ import { LogoutPage } from './components/pages/logout-page/logout-page';
 import { LoginGuardGuard } from './guards/login-guard-guard';
 import { LoginLayout } from './layouts/login-layout/login-layout';
 import { MainLayout } from './layouts/main-layout/main-layout';
+import { TransferPage } from './components/pages/transfer-page/transfer-page';
 
 export const routes: Routes = [
   // SIN HEADER → solo login/logout
@@ -43,6 +44,7 @@ export const routes: Routes = [
 
       { path: 'transactions', component: TransactionList },
       { path: 'transactions/:id', component: TransactionPage },
+      { path: 'transfers', component: TransferPage },
     ],
   },
 

@@ -38,6 +38,7 @@ export class AccountPage {
         this.account = account;
         this.cardList = account.tarjetas;
         this.transactions = account.movimientos;
+        this.transactions.reverse();
       },
       error: (error) => {
         console.error(error);

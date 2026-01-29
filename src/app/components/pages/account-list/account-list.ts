@@ -33,6 +33,7 @@ export class AccountList {
           (acc, cuenta) => acc.concat(cuenta.movimientos),
           [],
         );
+        this.movimientos.reverse();
       },
       error: (error) => {
         console.log(error);

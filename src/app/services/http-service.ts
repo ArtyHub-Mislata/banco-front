@@ -7,6 +7,7 @@ import { CardModel } from '../models/CardModel';
 import { TransactionModel } from '../models/TransactionModel';
 import { CredentialModel } from '../models/CredentialModel';
 import { Router } from '@angular/router';
+import { TransferRequest } from '../models/TransferModel';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,10 @@ export class HttpService {
     private router: Router,
   ) {}
 
+  //TRANSFERENCIA
+  doATransacction(transfer: TransferRequest): Observable<void> {
+    return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
+  }
   //CUSTOMER
 
   getCustomer(): Observable<CustomerModel> {
