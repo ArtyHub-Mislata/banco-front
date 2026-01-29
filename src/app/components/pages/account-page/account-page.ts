@@ -6,10 +6,11 @@ import { CardModel } from '../../../models/CardModel';
 import { TransactionList } from '../transaction-list/transaction-list';
 import { TransactionModel } from '../../../models/TransactionModel';
 import { DatePipe, DecimalPipe } from '@angular/common';
+import { CuboGiratorioComponent } from '../cubo-giratorio/cubo-giratorio';
 
 @Component({
   selector: 'account-page',
-  imports: [DecimalPipe, DatePipe, RouterLink],
+  imports: [DecimalPipe, DatePipe, RouterLink, CuboGiratorioComponent],
   templateUrl: './account-page.html',
   styleUrl: './account-page.scss',
 })
