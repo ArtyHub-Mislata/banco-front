@@ -13,24 +13,17 @@ import { TransferRequest } from '../models/TransferModel';
   providedIn: 'root',
 })
 export class HttpService {
-  private url = 'http://bank-back-artyhub.producciondaw.cip.fpmislata.com/api';
+  private url = 'http://bank-back-artyhub.preproducciondaw.cip.fpmislata.com/api';
 
   constructor(
     private httpClient: HttpClient,
     private router: Router,
   ) {}
 
-<<<<<<< HEAD
-  private url = "http://localhost:8081/api"
-
-  constructor (private httpClient: HttpClient, private router: Router){}
-  
-=======
   //TRANSFERENCIA
   doATransacction(transfer: TransferRequest): Observable<void> {
     return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
   }
->>>>>>> refs/remotes/origin/develop
   //CUSTOMER
 
   getCustomer(): Observable<CustomerModel> {
