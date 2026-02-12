@@ -20,17 +20,10 @@ export class HttpService {
     private router: Router,
   ) {}
 
-<<<<<<< HEAD
   //TRANSFERENCIA
   doATransacction(transfer: TransferRequest): Observable<void> {
     return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
   }
-=======
-  doATransacction(transfer: TransferRequest): Observable<void> {
-    return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
-  }
-
->>>>>>> refs/remotes/origin/develop
   //CUSTOMER
 
   getCustomer(): Observable<CustomerModel> {

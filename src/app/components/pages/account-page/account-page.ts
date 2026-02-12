@@ -3,14 +3,12 @@ import { AccountModel } from '../../../models/AccountModel';
 import { HttpService } from '../../../services/http-service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CardModel } from '../../../models/CardModel';
-import { TransactionList } from '../transaction-list/transaction-list';
 import { TransactionModel } from '../../../models/TransactionModel';
 import { DatePipe, DecimalPipe } from '@angular/common';
-import { CuboGiratorioComponent } from '../cubo-giratorio/cubo-giratorio';
 
 @Component({
   selector: 'account-page',
-  imports: [DecimalPipe, DatePipe, RouterLink, CuboGiratorioComponent],
+  imports: [DecimalPipe, DatePipe, RouterLink],
   templateUrl: './account-page.html',
   styleUrl: './account-page.scss',
 })
