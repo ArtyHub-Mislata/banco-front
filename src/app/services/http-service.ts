@@ -16,7 +16,7 @@ export class HttpService {
   btnIsLogged = new BehaviorSubject<boolean>(this.hasToken());
   isLogged$ = this.btnIsLogged.asObservable();
 
-  private url = "http://localhost:8080/api"
+  private url = "http://localhost:8081/api"
 
   constructor (private httpClient: HttpClient, private router: Router){}
   
