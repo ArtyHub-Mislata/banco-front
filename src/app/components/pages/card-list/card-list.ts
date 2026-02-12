@@ -13,21 +13,21 @@ import { FormsModule } from '@angular/forms';
 })
 export class CardList {
   cards!: CardModel[];
-  account!: AccountModel;
   searchText: string = '';
-
+  
   constructor(private httpService: HttpService){}
 
   ngOnInit() {
-    const accountId = this.account.id;
-    const accountIdString = accountId?.toString();
-    this.getAllCardsByAccount(accountIdString!);
+    this.getAllCardsByUser();
   }
 
-  getAllCardsByAccount(accountIdString: string) {
-    this.httpService.getAllCards(accountIdString).subscribe({
+  
+  getAllCardsByUser(){
+    this.httpService.getAllCardsOfUser().subscribe({
       next: (cards) => {
         this.cards = cards;
+        console.log(cards)
+        
       },
       error: (error) => {
         console.log(error);
@@ -50,4 +50,5 @@ export class CardList {
       .includes(text)
     );
   }
+ 
 }

@@ -1,7 +1,26 @@
-<div class="l-flex l-flex--justify-center l-flex--align-center">
-    <div class="c-card c-card__body">
-        <h1 class="c-title__title">¿Estas seguro que deseas cerrar sesión?</h1>
-        <a c-button funcion="normal" importancia="primaria" tamano="mediano" routerLink="/">Cancelar</a>
-        <a c-button funcion="peligrosa" importancia="terciaria" tamano="mediano" (click)="logOut()">Cerrar Sesión</a> 
+<div class="logout-page">
+  <div class="logout-card">
+    <h2 class="logout-title">¿Estás seguro que deseas cerrar sesión?</h2>
+
+    <p class="logout-text">
+      Al cerrar sesión se perderá el acceso a tu cuenta hasta que vuelvas a iniciar sesión.
+    </p>
+
+    <div class="logout-actions">
+      <a
+        c-button
+        funcion="alternativa"
+        importancia="terciaria"
+        tamano="mediano"
+        [routerLink]="'app'"
+        role="button"
+      >
+        Cancelar
+      </a>
+
+      <button c-button funcion="normal" importancia="primaria" tamano="mediano" (click)="logOut()">
+        Cerrar Sesión
+      </button>
     </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
 export interface CredentialModel {
-    login: string;
+    username: string;
     password: string;
 }

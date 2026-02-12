@@ -1,0 +1,239 @@
+/* ===============================
+   DASHBOARD BASE
+================================ */
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+   MAIN LAYOUT
+================================ */
+
+.dashboard-main {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+/* ===============================
+   CUENTAS
+================================ */
+
+.accounts-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.account-card {
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+}
+
+.account-card:hover {
+  transform: translateY(-4px);
+}
+
+.account-iban {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.account-saldo {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.account-meta {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.accounts-section {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Scroll bonito */
+.accounts-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.accounts-section::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 6px;
+}
+
+/* ===============================
+   TARJETAS REALISTAS
+================================ */
+
+.cards-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bank-card {
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  padding: 1.2rem;
+  position: relative;
+  color: #fff;
+
+  background: linear-gradient(135deg, #020617, #1e293b, #0f172a);
+
+  box-shadow:
+    0 25px 45px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transform: perspective(900px) rotateX(3deg);
+  transition: transform 0.3s ease;
+}
+
+.bank-card:hover {
+  transform: perspective(900px) rotateX(0deg) translateY(-6px);
+}
+
+/* Chip */
+.bank-card__chip {
+  width: 36px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #facc15, #ca8a04);
+  margin-bottom: 1.5rem;
+}
+
+/* Número */
+.bank-card__number {
+  font-size: 1rem; // antes 1.15rem
+  letter-spacing: 0.18em;
+  margin-bottom: 1.2rem;
+}
+
+/* Footer */
+.bank-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-card__name {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.bank-card__exp {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* ===============================
+   MOVIMIENTOS
+================================ */
+
+.movements-section {
+  margin-bottom: 3rem;
+}
+
+.movement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+.movement-row:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.movement-concept {
+  font-weight: 500;
+  margin: 0;
+}
+
+.movement-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.movement-amount {
+  font-weight: 600;
+}
+
+.movement-amount.positive {
+  color: #16a34a;
+}
+
+.movement-amount.negative {
+  color: #dc2626;
+}
+
+/* ===============================
+   GENERIC CARD
+================================ */
+
+.c-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.c-card__title {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.c-card__text {
+  color: #6b7280;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .dashboard-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+  padding: 2rem;
+}
+

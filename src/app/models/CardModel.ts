@@ -6,5 +6,4 @@ export interface CardModel {
     fechaCaducidad: Date;
     cvv: string;
     nombreCompleto: string;
-    cuenta: AccountModel;
 }

@@ -1,0 +1,79 @@
+<div class="transfer-page">
+  <div class="transfer-container">
+    <header class="transfer-header">
+      <h1 class="transfer-title">New Transfer</h1>
+      <p class="transfer-subtitle">Send money securely between accounts</p>
+    </header>
+
+    <form class="transfer-form" (ngSubmit)="ejecutarTransferencia()" #transferForm="ngForm">
+      <!-- ORIGIN -->
+      <section class="transfer-section">
+        <h3 class="section-title">Origin account</h3>
+
+        <div class="input-group">
+          <label>Account</label>
+          <select name="origenIban" [(ngModel)]="transfer.origen.iban" required>
+            <option value="" disabled selected>Select an account</option>
+
+            @for (acc of accounts; track acc.iban) {
+              <option [value]="acc.iban">
+                {{ acc.iban }}
+              </option>
+            }
+          </select>
+        </div>
+      </section>
+
+      <!-- DESTINATION -->
+      <section class="transfer-section">
+        <h3 class="section-title">Destination account</h3>
+
+        <div class="input-group">
+          <label>IBAN</label>
+          <input
+            type="text"
+            name="destinoIban"
+            placeholder="ES00 0000 0000 0000 0000"
+            [(ngModel)]="transfer.destino.iban"
+            required
+          />
+        </div>
+      </section>
+
+      <!-- PAYMENT -->
+      <section class="transfer-section">
+        <h3 class="section-title">Payment details</h3>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label>Amount</label>
+            <input
+              type="number"
+              min="0.01"
+              step="0.01"
+              name="importe"
+              [(ngModel)]="transfer.pago.importe"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Concept</label>
+            <input
+              type="text"
+              name="concepto"
+              placeholder="Transfer concept"
+              [(ngModel)]="transfer.pago.concepto"
+              required
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="submit-button" [disabled]="transferForm.invalid">
+        Send transfer
+      </button>
+    </form>
+  </div>
+</div>

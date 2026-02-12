@@ -1,60 +1,65 @@
-<div class="l-flex l-flex--justify-center g--margin-top-5">
-    <div class="c-card g--padding-4">
+<div class="login-page">
+  <div class="login-card">
+    <h2 class="login-title">Iniciar sesión</h2>
 
-        <h3 class="c-card__title g--margin-bottom-5">
-            Iniciar sesión
-        </h3>
+    <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm" class="login-form">
+      <!-- Usuario -->
+      <div class="form-group">
+        <label class="form-label">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="credential.username"
+          name="login"
+          required
+          #loginCtrl="ngModel"
+          placeholder="Tu usuario"
+        />
+      </div>
+      @if (loginCtrl.invalid && (loginCtrl.dirty || loginCtrl.touched)) {
+        <div class="form-error">El usuario es obligatorio</div>
+      }
 
-        <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
-            <div class="g--margin-bottom-5">
-                <label class="form-label">Usuario</label>
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    [(ngModel)]="credential.login" 
-                    name="login"
-                    required
-                    #loginCtrl="ngModel">
-            </div>
-            @if (loginCtrl.invalid && (loginCtrl.dirty || loginCtrl.touched)) {
-                <div class="alert alert-danger">
-                    El usuario es obligatorio
-                </div>
-            }
+      <!-- Contraseña -->
+      <div class="form-group">
+        <label class="form-label">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          [(ngModel)]="credential.password"
+          name="password"
+          required
+          #passwordCtrl="ngModel"
+          placeholder="Tu contraseña"
+        />
+      </div>
+      @if (passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)) {
+        <div class="form-error">La contraseña es obligatoria</div>
+      }
 
-            <div class="g--margin-bottom-5">
-                <label class="form-label">Contraseña</label>
-                <input 
-                    type="password" 
-                    class="form-control" 
-                    [(ngModel)]="credential.password" 
-                    name="password"
-                    required
-                    #passwordCtrl="ngModel">
-            </div>
-            @if (passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)) {
-                <div class="alert alert-danger">
-                    El password es obligatorio
-                </div>
-            }
+      <!-- Error general -->
+      @if (generalError) {
+        <div class="form-general-error">
+          {{ generalError }}
+        </div>
+      }
 
-            @if (generalError) {
-                <div class="alert alert-warning text-center">
-                    {{ generalError }}
-                </div>
-            }
+      <!-- Botones -->
+      <div class="login-actions">
+        <a c-button funcion="alternativa" importancia="terciaria" tamano="mediano" routerLink="/">
+          Volver
+        </a>
 
-            <div class="l-flex l-flex--justify-between">
-                <a c-button funcion="alternativa" importancia="terciaria" tamano="mediano"
-                    routerLink="/">
-                    Volver
-                </a>
-
-                <button c-button funcion="normal" importancia="primaria" tamano="mediano"
-                    [disabled]="loginForm.invalid || loading">
-                    Entrar
-                </button>
-            </div>
-        </form>
-    </div>
+        <button
+          c-button
+          funcion="normal"
+          importancia="primaria"
+          tamano="mediano"
+          [disabled]="loginForm.invalid || loading"
+        >
+          Entrar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

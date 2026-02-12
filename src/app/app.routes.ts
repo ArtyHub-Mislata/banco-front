@@ -10,21 +10,53 @@ import { InitialPage } from './components/pages/initial-page/initial-page';
 import { LoginPage } from './components/pages/login-page/login-page';
 import { LogoutPage } from './components/pages/logout-page/logout-page';
 import { LoginGuardGuard } from './guards/login-guard-guard';
+import { LoginLayout } from './layouts/login-layout/login-layout';
+import { MainLayout } from './layouts/main-layout/main-layout';
+import { TransferPage } from './components/pages/transfer-page/transfer-page';
+import { CuboGiratorioComponent } from './components/pages/cubo-giratorio/cubo-giratorio';
 
 export const routes: Routes = [
-    {path: '', component: InitialPage},
+  // SIN HEADER → solo login/logout
+  {
+    path: 'login',
+    component: LoginLayout,
+    children: [{ path: '', component: LoginPage }],
+  },
+  {
+    path: 'logout',
+    component: LoginLayout,
+    children: [{ path: '', component: LogoutPage }],
+  },
 
-    { path: 'customer', component: CustomerPage, canActivate: [LoginGuardGuard]},
+  // CON HEADER → app protegida
+  {
+    path: 'app',
+    component: MainLayout,
+    canActivate: [LoginGuardGuard],
+    children: [
+      { path: '', component: InitialPage }, // /app → InitialPage
+      { path: 'customer', component: CustomerPage },
 
-    {path: 'accounts', component: AccountList, canActivate: [LoginGuardGuard]},
-    {path: 'accounts/:id', component: AccountPage, canActivate: [LoginGuardGuard]},
+      { path: 'accounts', component: AccountList },
+      { path: 'accounts/:id', component: AccountPage },
 
-    {path: 'cards', component: CardList, canActivate: [LoginGuardGuard]},
-    {path: 'cards/:id', component: CardPage, canActivate: [LoginGuardGuard]},
+      { path: 'cards', component: CardList },
+      { path: 'cards/:id', component: CardPage },
 
-    {path: 'transactions', component: TransactionList, canActivate: [LoginGuardGuard]},
-    {path: 'transactions/:id', component: TransactionPage, canActivate: [LoginGuardGuard]},
+      { path: 'transactions', component: TransactionList },
+      { path: 'transactions/:id', component: TransactionPage },
+      { path: 'transfers', component: TransferPage },
+      { path: 'saracatunga', component: CuboGiratorioComponent },
+    ],
+  },
 
-    { path: 'login', component: LoginPage },
-    { path: 'logout', component: LogoutPage, canActivate: [LoginGuardGuard] }
+  // REDIRECCIÓN POR DEFECTO → si vas a '' intenta InitialPage
+  {
+    path: '',
+    redirectTo: '/app',
+    pathMatch: 'full',
+  },
+
+  // Cualquier ruta inválida
+  { path: '**', redirectTo: '/app' },
 ];

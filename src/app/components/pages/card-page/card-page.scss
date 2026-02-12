@@ -1,0 +1,188 @@
+/* ===============================
+   PAGE LAYOUT
+================================ */
+
+.card-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===============================
+   HEADER
+================================ */
+
+.card-page-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* ===============================
+   CARD PREVIEW
+================================ */
+
+.card-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.bank-card {
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  padding: 1.5rem;
+  position: relative;
+  color: #fff;
+
+  background: linear-gradient(135deg, #020617, #1e293b, #0f172a);
+
+  box-shadow:
+    0 30px 50px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transition: transform 0.3s ease;
+}
+
+.bank-card.large {
+  width: 320px; // más compacta
+  transform: perspective(900px) rotateX(3deg);
+}
+
+.bank-card.large:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-6px);
+}
+
+/* Chip */
+.bank-card__chip {
+  width: 44px;
+  height: 34px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #facc15, #ca8a04);
+  margin-bottom: 2.5rem;
+}
+
+/* Número */
+.bank-card__number {
+  font-size: 1.2rem;
+  letter-spacing: 0.22em;
+  margin-bottom: 1.8rem;
+}
+
+/* Footer */
+.bank-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-card__name {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.bank-card__exp {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* ===============================
+   MOVEMENTS
+================================ */
+
+.card-movements {
+  margin-bottom: 3rem;
+}
+
+.movements-card {
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.movement-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+.movement-row:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.movement-concept {
+  font-weight: 500;
+  margin: 0;
+}
+
+.movement-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.movement-amount {
+  font-weight: 600;
+}
+
+.movement-amount.positive {
+  color: #16a34a;
+}
+
+.movement-amount.negative {
+  color: #dc2626;
+}
+
+/* ===============================
+   GENERIC
+================================ */
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.c-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  padding: 2rem;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+  .bank-card.large {
+    width: 100%;
+  }
+}
