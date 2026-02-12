@@ -24,8 +24,8 @@ export class HttpService {
   doATransacction(transfer: TransferRequest): Observable<void> {
     return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
   }
-  //CUSTOMER
 
+  //CUSTOMER
   getCustomer(): Observable<CustomerModel> {
     return this.httpClient.get<CustomerModel>(`${this.url}/customer`);
   }
