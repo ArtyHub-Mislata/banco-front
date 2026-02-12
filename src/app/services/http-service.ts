@@ -20,17 +20,10 @@ export class HttpService {
     private router: Router,
   ) {}
 
-<<<<<<< HEAD
-  private url = "http://localhost:8081/api"
-
-  constructor (private httpClient: HttpClient, private router: Router){}
-  
-=======
-  //TRANSFERENCIA
   doATransacction(transfer: TransferRequest): Observable<void> {
     return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
   }
->>>>>>> refs/remotes/origin/develop
+
   //CUSTOMER
 
   getCustomer(): Observable<CustomerModel> {
