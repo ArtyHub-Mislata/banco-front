@@ -13,7 +13,7 @@ import { TransferRequest } from '../models/TransferModel';
   providedIn: 'root',
 })
 export class HttpService {
-  private url = 'http://bank-back-artyhub.preproducciondaw.cip.fpmislata.com/api';
+  private url = 'http://localhost:8081/api';
 
   constructor(
     private httpClient: HttpClient,
