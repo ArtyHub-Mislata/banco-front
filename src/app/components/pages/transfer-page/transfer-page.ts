@@ -62,7 +62,17 @@ export class TransferPage {
       },
     });
   }
+  formatearIban(event: any) {
+    let valor = event.target.value;
+    valor = valor.replace(/\s+/g, '');
+    valor = valor.toUpperCase();
+    const formateado = valor.match(/.{1,4}/g)?.join(' ') || '';
+    this.transfer.destino.iban = formateado;
+  }
   ejecutarTransferencia() {
+    const ibanSinEspacios = this.transfer.destino.iban.replace(/\s+/g, '');
+    console.log(ibanSinEspacios);
+    this.transfer.destino.iban = ibanSinEspacios;
     this.httpService.doATransacction(this.transfer).subscribe({
       next: () => {
         console.log('HA SALIDO BIEEEEEN');

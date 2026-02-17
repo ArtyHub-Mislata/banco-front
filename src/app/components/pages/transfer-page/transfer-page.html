@@ -1,8 +1,8 @@
 <div class="transfer-page">
   <div class="transfer-container">
     <header class="transfer-header">
-      <h1 class="transfer-title">New Transfer</h1>
-      <p class="transfer-subtitle">Send money securely between accounts</p>
+      <h1 class="transfer-title">TRANSFERENCIA</h1>
+      <p class="transfer-subtitle">Envía dinero de forma segura entre cuentas</p>
     </header>
 
     <form class="transfer-form" (ngSubmit)="ejecutarTransferencia()" #transferForm="ngForm">
@@ -34,7 +34,9 @@
             type="text"
             name="destinoIban"
             placeholder="ES00 0000 0000 0000 0000"
+            maxlength="29"
             [(ngModel)]="transfer.destino.iban"
+            (input)="formatearIban($event)"
             required
           />
         </div>

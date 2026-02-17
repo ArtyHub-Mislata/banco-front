@@ -6,17 +6,35 @@
       <p class="c-card__text">Resumen de tus cuentas y actividad reciente</p>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="dashboard-main">
       <!-- CUENTAS -->
       <section class="accounts-section">
         <h2 class="section-title">Cuentas</h2>
-        <h3 class="section-subtitle">Saldo total: {{ saldoTotal }}</h3>
+        <div class="section-subtitle-row">
+          <h3 class="section-subtitle">
+            Saldo total:
+            @if (mostrarSaldos) {
+              {{ saldoTotal | number: '1.2-2' }} €
+            } @else {
+              **** €
+            }
+          </h3>
+
+          <button class="saldo-btn" (click)="ocultarSaldo()">
+            <img src="oculto.png" width="40" height="40" />
+          </button>
+        </div>
         <div class="accounts-list">
           @for (account of accounts; track account.iban) {
             <div class="account-card" routerLink="/app/accounts/{{ account.id }}">
               <p class="account-iban">{{ account.iban }}</p>
-              <h3 class="account-saldo">{{ account.saldo | number: '1.2-2' }} €</h3>
+              <h3 class="account-saldo">
+                @if (mostrarSaldos) {
+                  {{ account.saldo | number: '1.2-2' }} €
+                } @else {
+                  **** €
+                }
+              </h3>
               <p class="account-meta">
                 {{ account.tarjetas.length }} tarjetas ·
                 {{ account.movimientos.length }} movimientos

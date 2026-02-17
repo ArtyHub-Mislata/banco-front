@@ -22,7 +22,7 @@ export class InitialPage {
   transactions!: TransactionModel[];
   saldoTotal!: number;
   constructor(private httpService: HttpService) {}
-
+  mostrarSaldos: boolean = true;
   ngOnInit(): void {
     this.loadAccounts();
     this.loadUser();
@@ -59,5 +59,12 @@ export class InitialPage {
 
   calcularSaldoTotal(accounts: AccountModel[]) {
     return accounts.reduce((acumulador, cuenta) => acumulador + cuenta.saldo, 0);
+  }
+  ocultarSaldo() {
+    if (this.mostrarSaldos) {
+      this.mostrarSaldos = false;
+    } else {
+      this.mostrarSaldos = true;
+    }
   }
 }
