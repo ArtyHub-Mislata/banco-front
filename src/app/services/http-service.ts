@@ -22,7 +22,7 @@ export class HttpService {
 
   //TRANSFERENCIA
   doATransacction(transfer: TransferRequest): Observable<void> {
-    return this.httpClient.post<void>(`${this.url}/transferencia`, transfer);
+    return this.httpClient.post<void>(`${this.url}/pagos/transferencia`, transfer);
   }
 
   //CUSTOMER

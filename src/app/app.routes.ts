@@ -16,7 +16,6 @@ import { TransferPage } from './components/pages/transfer-page/transfer-page';
 import { CuboGiratorioComponent } from './components/pages/cubo-giratorio/cubo-giratorio';
 
 export const routes: Routes = [
-  // SIN HEADER → solo login/logout
   {
     path: 'login',
     component: LoginLayout,
@@ -28,7 +27,6 @@ export const routes: Routes = [
     children: [{ path: '', component: LogoutPage }],
   },
 
-  // CON HEADER → app protegida
   {
     path: 'app',
     component: MainLayout,
@@ -50,13 +48,11 @@ export const routes: Routes = [
     ],
   },
 
-  // REDIRECCIÓN POR DEFECTO → si vas a '' intenta InitialPage
   {
     path: '',
     redirectTo: '/app',
     pathMatch: 'full',
   },
 
-  // Cualquier ruta inválida
   { path: '**', redirectTo: '/app' },
 ];
