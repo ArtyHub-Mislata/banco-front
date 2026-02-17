@@ -23,6 +23,11 @@
   margin-bottom: 3rem;
 }
 
+.section-subtitle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .section-title {
   font-size: 1.3rem;
   font-weight: 600;
@@ -34,6 +39,21 @@
   font-weight: 500;
   margin-bottom: 0.5rem;
   color: #1f2937;
+}
+.saldo-btn {
+  color: white;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+.saldo-btn:hover {
+  transform: translateY(-1px);
 }
 
 /* ===============================
@@ -236,4 +256,3 @@
   font-size: 0.95rem;
   padding: 2rem;
 }
-
